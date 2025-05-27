@@ -20,6 +20,9 @@
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .item button {
             background-color: #007bff;
@@ -43,99 +46,46 @@
             margin: 0 0 10px 0;
             color: #333;
         }
-        .cart button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            margin: 10px auto;
-        }
-        .cart button:hover {
-            background-color: #218838;
+        #usercard {
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
         }
     </style>
 </head>
 <body>
     <h1>Магазин</h1>
-    <div id="items"></div>
+    <div id="usercard"></div>
+    <div id="items">
+        <div class="item">
+            Амарант (червоний) - 15 RUB
+            <button id="btn1">Добавить</button>
+        </div>
+        <div class="item">
+            Кокосовый субстрат 5 кг - 15 RUB
+            <button id="btn2">Добавить</button>
+        </div>
+        <div class="item">
+            Горох - 21 RUB
+            <button id="btn3">Добавить</button>
+        </div>
+        <div class="item">
+            Кинза - 50 RUB
+            <button id="btn4">Добавить</button>
+        </div>
+        <div class="item">
+            Редис (sango) - 18 RUB
+            <button id="btn5">Добавить</button>
+        </div>
+        <div class="item">
+            Рукола - 5 RUB
+            <button id="btn6">Добавить</button>
+        </div>
+    </div>
     <div class="cart">
         <h2>Корзина</h2>
         <div id="cart"></div>
-        <button onclick="sendCart()">Оформить заказ</button>
     </div>
-
-    <script>
-        let cart = [];
-
-        // Список товаров (соответствует PRICE в handlers.py)
-        const items = [
-            { id: "1", name: "Item1", price: 15 },
-            { id: "2", name: "Item2", price: 15 },
-            { id: "3", name: "Item3", price: 21 },
-            { id: "4", name: "Item4", price: 50 },
-            { id: "5", name: "Item5", price: 18 },
-            { id: "6", name: "Item6", price: 5 }
-        ];
-
-        // Отображение товаров
-        const itemsDiv = document.getElementById("items");
-        items.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `
-                ${item.name} - ${item.price} RUB
-                <button onclick="addToCart('${item.id}')">Добавить</button>
-            `;
-            itemsDiv.appendChild(div);
-        });
-
-        // Добавление в корзину
-        function addToCart(itemId) {
-            const existing = cart.find(i => i.id === itemId);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({ id: itemId, quantity: 1 });
-            }
-            updateCartDisplay();
-        }
-
-        // Обновление отображения корзины
-        function updateCartDisplay() {
-            const cartDiv = document.getElementById("cart");
-            cartDiv.innerHTML = "";
-            if (cart.length === 0) {
-                cartDiv.innerHTML = "Корзина пуста";
-                return;
-            }
-            let total = 0;
-            cart.forEach(item => {
-                const itemInfo = items.find(i => i.id === item.id);
-                const itemTotal = itemInfo.price * item.quantity;
-                total += itemTotal;
-                const div = document.createElement("div");
-                div.innerHTML = `${itemInfo.name} (x${item.quantity}) - ${itemTotal} RUB`;
-                cartDiv.appendChild(div);
-            });
-            const totalDiv = document.createElement("div");
-            totalDiv.innerHTML = `<strong>Итого: ${total} RUB</strong>`;
-            cartDiv.appendChild(totalDiv);
-        }
-
-        // Отправка корзины в бот
-        function sendCart() {
-            if (cart.length === 0) {
-                alert("Корзина пуста!");
-                return;
-            }
-            Telegram.WebApp.sendData(JSON.stringify({ items: cart }));
-        }
-
-        // Инициализация отображения корзины
-        updateCartDisplay();
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
