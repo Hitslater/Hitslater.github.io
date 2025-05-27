@@ -1,10 +1,15 @@
-from aiogram.types import WebAppInfo, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import WebAppInfo
+from aiogram import types
 
-keyboard = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(
-            text="🛒 Перейти в магазин",
-            web_app=WebAppInfo(url="https://hitslater.github.io/")
-        )]
-    ]
+web_app = WebAppInfo(url="https://hitslater.github.io/")
+
+keyboard = types.ReplyKeyboardMarkup(
+    keyboard=[
+        [types.KeyboardButton(text="Site", web_app=web_app)]
+    ],
+    
+    resize_keyboard=True
 )
+
+
+
