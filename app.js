@@ -19,7 +19,7 @@ btn1.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы заказали Зростаюча мікрозелень амарант (червоний)");
+		tg.MainButton.setText("Вы заказали амарант (червоний)");
 		item = "1";
 		tg.MainButton.show();
 	}
@@ -30,7 +30,7 @@ btn2.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы заказали Набор для приготовления кокосового субстрата (на 5 кг брикета)");
+		tg.MainButton.setText("Вы заказали кокосовый субстрата5 кг");
 		item = "2";
 		tg.MainButton.show();
 	}
@@ -41,7 +41,7 @@ btn3.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы заказали Растущая микрозелень горох");
+		tg.MainButton.setText("Вы заказали горох");
 		item = "3";
 		tg.MainButton.show();
 	}
@@ -52,7 +52,7 @@ btn4.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы заказали Растущая микрозелень кинза");
+		tg.MainButton.setText("Вы заказали кинза");
 		item = "4";
 		tg.MainButton.show();
 	}
@@ -63,7 +63,7 @@ btn5.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы заказали Растущая микрозелень редис (sango)");
+		tg.MainButton.setText("Вы заказали редис (sango)");
 		item = "5";
 		tg.MainButton.show();
 	}
@@ -74,7 +74,7 @@ btn6.addEventListener("click", function(){
 		tg.MainButton.hide();
 	}
 	else {
-		tg.MainButton.setText("Вы заказали Растущая микрозелень рукола");
+		tg.MainButton.setText("Вы заказали рукола");
 		item = "6";
 		tg.MainButton.show();
 	}
