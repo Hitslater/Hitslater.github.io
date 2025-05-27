@@ -9,12 +9,12 @@ async def start(message: types.Message):
                            reply_markup=keyboard)
 
 PRICE = {
-    '1': [types.LabeledPrice(label='Item1', amount=15.5)],
+    '1': [types.LabeledPrice(label='Item1', amount=15)],
     '2': [types.LabeledPrice(label='Item2', amount=15)],
     '3': [types.LabeledPrice(label='Item3', amount=21)],
     '4': [types.LabeledPrice(label='Item4', amount=50)],
-    '5': [types.LabeledPrice(label='Item5', amount=18.99)],
-    '6': [types.LabeledPrice(label='Item6', amount=0.54)]
+    '5': [types.LabeledPrice(label='Item5', amount=18)],
+    '6': [types.LabeledPrice(label='Item6', amount=5)]
 }
 
 @dp.message_handler(content_types='web_app_data')
@@ -22,7 +22,7 @@ async def buy_process(web_app_message):
     await bot.send_invoice(web_app_message.chat.id,
                            title='Laptop',
                            description='Description',
-                           provider_token='pay_token',
+                           provider_token='PAYMENTS_TOKEN',
                            currency='rub',
                            need_email=True,
                            prices=PRICE[f'{web_app_message.web_app_data.data}'],
