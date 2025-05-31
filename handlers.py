@@ -1,7 +1,6 @@
 from main import bot, dp
 from keyboards import keyboard
 from aiogram import types
-from aiogram import Dispatcher
 from aiogram.dispatcher.filters import Command
 
 @dp.message_handler(Command('start'))
@@ -10,12 +9,12 @@ async def start(message: types.Message):
                            reply_markup=keyboard)
 
 PRICE = {
-    '1': [types.LabeledPrice(label='Item1', amount=15)],
-    '2': [types.LabeledPrice(label='Item2', amount=15)],
-    '3': [types.LabeledPrice(label='Item3', amount=21)],
-    '4': [types.LabeledPrice(label='Item4', amount=50)],
-    '5': [types.LabeledPrice(label='Item5', amount=18)],
-    '6': [types.LabeledPrice(label='Item6', amount=5)]
+    '1': [types.LabeledPrice(label='Item1', amount=100000)],
+    '2': [types.LabeledPrice(label='Item2', amount=200000)],
+    '3': [types.LabeledPrice(label='Item3', amount=300000)],
+    '4': [types.LabeledPrice(label='Item4', amount=400000)],
+    '5': [types.LabeledPrice(label='Item5', amount=500000)],
+    '6': [types.LabeledPrice(label='Item6', amount=600000)]
 }
 
 @dp.message_handler(content_types='web_app_data')
@@ -23,7 +22,7 @@ async def buy_process(web_app_message):
     await bot.send_invoice(web_app_message.chat.id,
                            title='Laptop',
                            description='Description',
-                           provider_token='PAYMENTS_TOKEN',
+                           provider_token='pay_token',
                            currency='rub',
                            need_email=True,
                            prices=PRICE[f'{web_app_message.web_app_data.data}'],
